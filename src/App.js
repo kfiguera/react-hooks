@@ -1,16 +1,20 @@
 import React from 'react';
 import Header from './components/Header';
 import Characters from './components/Characters';
+import {ThemeContext, themes} from './context/ThemeContext';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Characters />
-      <h1>Hola Mundo</h1>
-    </div>
-  );
+    const [theme, setTheme] = React.useState(themes.dark);
+    return (
+        <ThemeContext.Provider value={{theme, setTheme}}>
+            <div className={'App ' + theme}>
+                <Header/>
+                <Characters/>
+            </div>
+        </ThemeContext.Provider>
+
+    );
 }
 
 export default App;

@@ -1,0 +1,19 @@
+.Header {
+    display: flex;
+    padding: 0 24px;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 2px 4px #8a2be255;
+    height: 60px;
+}
+.Header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+.Header button {
+    border: none;
+    border-radius: 0.5rem;
+    padding: 8px 16px;
+    background-color: blueviolet;
+    color: white;
+}

@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-
+import React, { useContext } from 'react';
+import {ThemeContext, themes} from '../context/ThemeContext';
+import '../styles/Header.css'
 const Header = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const {theme, setTheme} = useContext(ThemeContext);
 
   const handleClick = () => {
-    setDarkMode(!darkMode);
+      (theme === 'bg-dark') ? setTheme('bg-light') : setTheme('bg-dark');
   }
 
   return (
     <div className="Header">
       <h1>ReactHooks</h1>
-      <button type="button" onClick={handleClick}>{darkMode ? 'Dark Mode' : 'Light Mode'}</button>
-      <button type="button" onClick={() => setDarkMode
-        (!darkMode)}>{darkMode ? 'Dark Mode 2' : 'Light Mode 2'}</button>
+      <button type="button" onClick={handleClick}>{theme === 'bg-dark' ? 'Light Mode' : 'Dark Mode'}</button>
     </div>
   );
 }

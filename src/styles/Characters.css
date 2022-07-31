@@ -1,0 +1,36 @@
+.CharacterList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 240px);
+    gap: 26px;
+    place-content: center;
+    margin: 3em 0 0 0;
+}
+
+.CharacterItem img {
+    width: 240px;
+    height: 240px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+}
+.CharacterInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Characters h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+@media (max-width: 640px) {
+    .CharacterList {
+        grid-template-columns: repeat(auto-fill, 140px);
+    }
+    .CharacterItem {
+        width: 140px;
+    }
+    .CharacterItem img {
+        width: 140px;
+        height: 140px;
+    }
+}
