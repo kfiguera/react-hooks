@@ -1,9 +1,11 @@
-import React, {useState, useEffect, useReducer, useMemo, useRef} from 'react';
+import React, {useState, useEffect, useReducer, useMemo, useRef, useCallback} from 'react';
 import '../styles/Characters.css';
+import Search from "./Search";
 
 const initialState = {
     favorites: []
 }
+
 const favoriteReducer = (state, action) => {
     switch (action.type) {
         case 'ADD_TO_FAVORITE':
@@ -39,20 +41,24 @@ const Characters = () => {
         dispatch({type: 'REMOVE_FROM_FAVORITE', payload: character.id});
     }
 
-    const handleSearch = () => {
-        setSearch(searchInput.current.value);
-    }
+    // const handleSearch = () => {
+    //     setSearch(searchInput.current.value);
+    // }
 
-    /*const filteredCharacters = characters.filter((character) => {
-        console.log('search', search);
-        return character.name.toLowerCase().includes(search.toLowerCase());
-    });*/
+    const handleSearch = useCallback(() => {
+        setSearch(searchInput.current.value);
+    },[]);
+
+    // const filteredCharacters = characters.filter((character) => {
+    //     console.log('search', search);
+    //     return character.name.toLowerCase().includes(search.toLowerCase());
+    // });
 
     const filteredFavorites = useMemo(() => {
         return characters.filter((character) => {
             return character.name.toLowerCase().includes(search.toLowerCase());
         });
-    },[characters,search]);
+    }, [characters, search]);
 
 
     return (
@@ -72,9 +78,7 @@ const Characters = () => {
                 </div>
             </>
             }
-            <div className="Search">
-                <input type="text" placeholder="Search" value={search} ref={searchInput} onChange={handleSearch}/>
-            </div>
+            <Search search={search} searchInput={searchInput} handleSearch={handleSearch}/>
             <h1>Characters</h1>
             <div className="CharacterList">
                 {filteredFavorites.map(character => (
