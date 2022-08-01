@@ -1,3 +1,14 @@
+.Search {
+    margin: 3em 0 0 0;
+    padding: 0 24px;
+}
+.Search input {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+}
+
 .CharacterList {
     display: grid;
     grid-template-columns: repeat(auto-fill, 240px);
